@@ -1,21 +1,36 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Register() {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleShowForm = () => {
+    setShowForm(true);
+  };
+
   return (
-    <div className="container mt-5">
-      <h2>Register</h2>
-      <form>
-        <div className="mb-3">
-          <input type="text" className="form-control" placeholder="Full Name" />
+    <div className="container mt-5 d-flex justify-content-center">
+      {!showForm ? (
+        <button className="btn btn-primary btn-lg" onClick={handleShowForm}>
+          Register
+        </button>
+      ) : (
+        <div className="card shadow p-5" style={{ maxWidth: '600px', width: '100%' }}>
+          <h2 className="text-center mb-5">Register</h2>
+          <form>
+            <div className="mb-4">
+              <input type="text" className="form-control form-control-lg" placeholder="Full Name" />
+            </div>
+            <div className="mb-4">
+              <input type="email" className="form-control form-control-lg" placeholder="Email" />
+            </div>
+            <div className="mb-4">
+              <input type="password" className="form-control form-control-lg" placeholder="Password" />
+            </div>
+            <Link to="/doctors" className="btn btn-primary btn-lg w-100">Register</Link>
+          </form>
         </div>
-        <div className="mb-3">
-          <input type="email" className="form-control" placeholder="Email" />
-        </div>
-        <div className="mb-3">
-          <input type="password" className="form-control" placeholder="Password" />
-        </div>
-        <Link to="/doctors" className="btn btn-primary">Register</Link>
-      </form>
+      )}
     </div>
   );
 }
