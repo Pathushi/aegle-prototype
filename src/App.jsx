@@ -10,22 +10,26 @@ import VideoConsultation from './pages/VideoConsultation';
 import PatientRecords from './pages/PatientRecords';
 import EmergencyInfo from './pages/EmergencyInfo';
 import AboutUs from './pages/AboutUs';
+import WelcomePage from './components/WelcomePage';
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/doctors" element={<DoctorList />} />
-        <Route path="/book" element={<AppointmentBooking />} />
-        <Route path="/consult" element={<VideoConsultation />} />
-        <Route path="/records" element={<PatientRecords />} />
-        <Route path="/emergency" element={<EmergencyInfo />} />
-        <Route path="/about" element={<AboutUs />} />
-      </Routes>
+    <div id="root">
+      <div className="content">
+        <Header />
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/doctors" element={<DoctorList />} />
+          <Route path="/book" element={<AppointmentBooking />} />
+          <Route path="/consult" element={<VideoConsultation />} />
+          <Route path="/records" element={<PatientRecords />} />
+          <Route path="/emergency" element={<EmergencyInfo />} />
+          <Route path="/about" element={<AboutUs />} />
+        </Routes>
+      </div>
       <Footer />
     </div>
   );
