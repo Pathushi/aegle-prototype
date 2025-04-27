@@ -1,0 +1,21 @@
+body {
+  background-color: #e6f7ff;
+}
+
+h1, h2 {
+  color: #007bff;
+}
+
+.btn-success {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.btn-primary {
+  background-color: #4fc3f7;
+  border-color: #4fc3f7;
+}
+
+footer {
+  font-size: 14px;
+}
