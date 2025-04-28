@@ -5,6 +5,8 @@ function VideoConsultation() {
     const videoRef = useRef(null);
     const [isCameraOn, setIsCameraOn] = useState(false);
     const [callEnded, setCallEnded] = useState(false);
+    const [review, setReview] = useState('');
+    const [rating, setRating] = useState(0);
 
     useEffect(() => {
         if (isCameraOn) {
@@ -37,6 +39,17 @@ function VideoConsultation() {
         console.log('Call ended');
     };
 
+    const handleSubmitReview = () => {
+        if (!review.trim() || rating === 0) {
+            alert('Please provide a review and rating.');
+            return;
+        }
+        // Add logic to save the review (e.g., API call)
+        alert(`Review submitted: ${review}, Rating: ${rating} stars`);
+        setReview('');
+        setRating(0);
+    };
+
     return (
         <div className="container mt-5 text-center">
             <h2>Video Consultation</h2>
@@ -54,9 +67,37 @@ function VideoConsultation() {
                     </button>
                 </>
             ) : (
-                <Link to="/" className="btn btn-success mt-3">
-                    Return Home
-                </Link>
+                <>
+                    <h3 className="mt-4">Review Your Doctor</h3>
+                    <textarea
+                        className="form-control mb-3"
+                        rows="4"
+                        placeholder="Write your review here..."
+                        value={review}
+                        onChange={(e) => setReview(e.target.value)}
+                    ></textarea>
+                    <div className="mb-3">
+                        <label className="form-label">Rating:</label>
+                        <select
+                            className="form-select"
+                            value={rating}
+                            onChange={(e) => setRating(Number(e.target.value))}
+                        >
+                            <option value="0">Select Rating</option>
+                            <option value="1">1 Star</option>
+                            <option value="2">2 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="5">5 Stars</option>
+                        </select>
+                    </div>
+                    <button className="btn btn-success" onClick={handleSubmitReview}>
+                        Submit Review
+                    </button>
+                    <Link to="/" className="btn btn-secondary mt-3 ms-2">
+                        Return Home
+                    </Link>
+                </>
             )}
         </div>
     );

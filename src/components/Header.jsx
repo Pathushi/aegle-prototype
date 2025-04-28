@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
+import { Dropdown } from 'react-bootstrap';
 
-function Header() {
+function Header({ patientName, notificationsCount, loggedIn }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow" style={{ padding: '0.5rem 1rem' }}>
-      <div className="container">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow d-flex justify-content-center align-items-center" style={{ padding: '0.25rem 1rem' }}>
+      <div className="container d-flex justify-content-between align-items-center">
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img 
             src="https://cdn-icons-png.flaticon.com/128/2382/2382443.png" 
@@ -12,43 +13,51 @@ function Header() {
           />
           <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#fff' }}>Aegle</span>
         </Link>
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarNav" 
-          aria-controls="navbarNav" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+        <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+          <ul className="navbar-nav">
             <li className="nav-item">
               <Link className="nav-link text-white" to="/about">About</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link text-white" to="/services">Services</Link>
             </li>
-            <li className="nav-item dropdown">
-              <Link 
-                className="nav-link dropdown-toggle text-white" 
-                to="#" 
-                id="navbarDropdown" 
-                role="button" 
-                data-bs-toggle="dropdown" 
-                aria-expanded="false"
-              >
-                Account
-              </Link>
-              <ul className="dropdown-menu dropdown-menu-end">
-                <li><Link className="dropdown-item" to="/login">Login</Link></li>
-                <li><Link className="dropdown-item" to="/register">Register</Link></li>
-              </ul>
-            </li>
+            {loggedIn && (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link text-white" to="/profile">Account</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-white" to="/prescription">Prescription</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-white position-relative" to="/notifications">
+                    Notifications
+                    {notificationsCount > 0 && (
+                      <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {notificationsCount}
+                      </span>
+                    )}
+                  </Link>
+                </li>
+              </>
+            )}
+            <Dropdown>
+              <Dropdown.Toggle variant="primary" id="languageDropdown" className="text-white">
+                Language
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item>English</Dropdown.Item>
+                <Dropdown.Item>සිංහල (Sinhala)</Dropdown.Item>
+                <Dropdown.Item>தமிழ் (Tamil)</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </ul>
         </div>
+        {patientName && (
+          <span className="navbar-text text-white ms-3">
+            Welcome, {patientName}
+          </span>
+        )}
       </div>
     </nav>
   );

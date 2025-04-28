@@ -1,53 +1,42 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { useNavigate } from 'react-router-dom';
 
 function WelcomePage() {
-    const navigate = useNavigate(); // Initialize navigation
+  const navigate = useNavigate();
 
-    const handleRegister = () => {
-        navigate('/register'); // Navigate to the register form
-    };
+  const handleRegister = () => {
+    navigate('/register'); // Navigate to the Register page
+  };
 
-    const handleLogin = () => {
-        navigate('/login'); // Navigate to the login page
-    };
+  const handleLogin = () => {
+    navigate('/login'); // Navigate to the Login page
+  };
 
-    return (
-        <div className="d-flex justify-content-center align-items-center vh-100">
-            <div className="welcome-page container text-center">
-                <div className="row">
-                    <div className="col-md-6">
-                        <div className="card">
-                            <div className="card-body">
-                                <img 
-                                    src="https://i.pinimg.com/236x/13/32/0d/13320dbd14258adb2c26e3fd3e735ba6.jpg" 
-                                    alt="About Us" 
-                                    className="card-img-top mb-3"
-                                />
-                                <h5 className="card-title">About Us</h5>
-                                <p className="card-text">Learn more about Aegle and our mission to provide universal healthcare at your fingertips.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="card">
-                            <div className="card-body">
-                                <img 
-                                    src="https://i.pinimg.com/236x/06/98/55/069855e21a5291f96dc395c46e7d6cf1.jpg" 
-                                    alt="Our Services" 
-                                    className="card-img-top mb-3"
-                                />
-                                <h5 className="card-title">Our Services</h5>
-                                <p className="card-text">Explore the wide range of healthcare services we offer to meet your needs.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button onClick={handleRegister} className="btn btn-primary">Register</button>
-                <button onClick={handleLogin} className="btn btn-secondary">Login</button>
-            </div>
+  return (
+    <div
+      className="d-flex justify-content-center align-items-center vh-100"
+      style={{
+        backgroundImage: 'url("https://via.placeholder.com/1920x1080")', // Replace with your image URL
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="welcome-page container text-center p-5 shadow rounded bg-white" style={{ maxWidth: '800px', padding: '3rem' }}>
+        <h1 className="mb-4" style={{ fontSize: '3rem', fontWeight: 'bold', color: '#007bff' }}>Welcome to Aegle</h1>
+        <p className="mb-4" style={{ fontSize: '1.5rem', color: '#6c757d' }}>
+          Your universal healthcare solution. Access healthcare services at your fingertips.
+        </p>
+        <div className="d-flex justify-content-center">
+          <button onClick={handleRegister} className="btn btn-primary btn-lg me-3">
+            Register
+          </button>
+          <button onClick={handleLogin} className="btn btn-secondary btn-lg">
+            Login
+          </button>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default WelcomePage;

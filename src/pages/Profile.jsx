@@ -26,9 +26,9 @@ function Profile() {
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">Profile</h2>
-      <div className="card shadow p-4" style={{ maxWidth: '600px', margin: '0 auto' }}>
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      <div className="card shadow p-4" style={{ maxWidth: '600px', width: '100%' }}>
+        <h2 className="text-center mb-4">Profile</h2>
         <div className="mb-3">
           <label className="form-label">Name</label>
           <input

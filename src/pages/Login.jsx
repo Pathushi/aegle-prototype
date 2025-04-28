@@ -1,9 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
-  const navigate = useNavigate(); // Initialize navigation
+function Login({ onLogin }) {
+  const navigate = useNavigate();
 
   const handleLogin = () => {
+    const patientName = 'John Doe'; // Replace with actual logic to fetch the patient's name
+    onLogin(patientName); // Pass the patient's name to the parent
     navigate('/home'); // Navigate to the home page
   };
 
